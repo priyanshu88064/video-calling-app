@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Calling App</title>
+  <style>
+
+    .box{
+      margin-top: 100px;
+      margin-left: 150px;
+      display: flex;
+      height: 500px;
+    }
+    .names{
+      width: 200px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .right{
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid black;
+      border-left: none;
+    }
+    .cont{
+      flex:9;
+    }
+    .bottom{
+      flex:1;
+      height: 20%;
+      border-top: 1px solid black;
+      display: flex;
+    }
+    .username{
+      border-bottom: 1px solid gray;
+      padding: 10px;
+    }
+    #startcall{
+      background-color: green;
+      color: white;
+      margin-left: auto;
+    }
+    #hangup{
+      background-color: red;
+      color: white;
+      margin-left: 2px;
+    }
+    #local,#remote{
+      background-color:rgb(190, 190, 190);
+    }
+    #local{
+      border-top: 1px solid black;
+    }
+    #remote{
+      border-bottom: 1px solid black;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+  <script src="script.js"></script>
+  <div id="root"></div>
+
+  <div class="box">
+    
+    <div id="names" class="names">
+      <video id="remote" width="200" height="200" autoplay></video>
+      <video id="local" width="200" height="200" autoplay muted></video>
+    </div>
+    
+    <div class="right">
+      
+      <div id="cont" class="cont">
+      </div>
+      <div class="bottom">
+        <input type="text" id="userid" placeholder="Enter your Name">
+        <input type="text" id="roomid" placeholder="Enter Room ID">
+        <button onclick="joinRoom()">Join Room</button>
+        <!-- <button onclick="leaveRoom()">Leave Room</button> -->
+        <button id="startcall" onclick="startCall()" disabled>Start Call</button>
+        <button id="hangup" onclick="leaveRoom()" disabled>Leave</button> 
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
